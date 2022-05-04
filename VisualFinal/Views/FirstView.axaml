@@ -51,11 +51,11 @@
 		</Style>
 	</UserControl.Styles>
 	<Grid RowDefinitions="2.2*,20*">
-		<ScrollViewer Grid.Row="0" Classes="sv1">
-			<DockPanel Classes="dp1">
-				<Button Content="Change view"
-						Command="{Binding $parent[Window].DataContext.Change}"
-						Classes="b1"/>
+		<DockPanel Grid.Row="0" Classes="dp1">
+			<Button Content="Change view"
+					Command="{Binding $parent[Window].DataContext.Change}"
+					Classes="b1"/>
+			<ScrollViewer Classes="sv1">
 				<TabControl Items="{Binding MainContext.Tabs}"
 				 Classes="tc1">
 					<TabControl.ItemTemplate>
@@ -78,8 +78,8 @@
 						</DataTemplate>
 					</TabControl.ContentTemplate>
 				</TabControl>
-			</DockPanel>
-		</ScrollViewer>
+			</ScrollViewer>
+		</DockPanel>
 		<!--
 		<DataGrid Grid.Row="1" Items="{Binding DataBaseGrid}" AutoGenerateColumns="True"/>
 		DataBaseGrid = DbContextVar.DbSetVar.ToList()  ???

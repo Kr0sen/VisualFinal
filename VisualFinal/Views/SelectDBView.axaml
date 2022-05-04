@@ -39,13 +39,16 @@
 			<TextBox Watermark="Selected" Focusable="False" CornerRadius="0"/>
 		</Border>
 		<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-			<ItemsControl Items="{Binding MainContext.Tabs}">
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<Button Classes="b1" Content="{Binding Header}"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
+			<StackPanel>
+				<Button Classes="b1" Content="Choose current query"/>
+				<ItemsControl Items="{Binding MainContext.Tabs}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Button Classes="b1" Content="{Binding Header}"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
 		</ScrollViewer>
 		<Button Classes="b2" Grid.Row="2" Content="Remove" BorderThickness="0,1,0,1"/>
 		<Button Classes="b2" Grid.Row="3" Content="Cancel" BorderThickness="0"/>

@@ -43,12 +43,11 @@
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							<Border Classes="br1">
-								<Grid ColumnDefinitions="3*,*,*,*">
+								<Grid ColumnDefinitions="4*,*,*">
 									<TextBlock Grid.Column="0" Text="{Binding Name}"
 									 VerticalAlignment="Center"/>
-									<Button Grid.Column="1" Content="Sub" Classes="b1"/>
-									<Button Grid.Column="2" Content="Show" Classes="b1"/>
-									<Button Grid.Column="3" Content="Delete" Classes="b1"/>
+									<Button Grid.Column="1" Content="Show" Classes="b1"/>
+									<Button Grid.Column="2" Content="Delete" Classes="b1"/>
 								</Grid>
 							</Border>
 						</DataTemplate>
@@ -63,13 +62,15 @@
 			 Command="{Binding $parent[Window].DataContext.Change}"
 			 Classes="b2"/>
 		</Grid>
-		<Grid Grid.Column="1" RowDefinitions="11*,*,*,*">
+		<Grid Grid.Column="1" RowDefinitions="9*,*,*,*,*,*">
 			<Border Classes="br1">
-				<TextBlock Grid.Row="0" Text="Put query here"/>
+				<TextBox Grid.Row="0" Watermark="Your query here" Focusable="False"/>
 			</Border>
 			<Button Grid.Row="1" Classes="b2" Name="Select" Content="Select"/>
 			<Button Grid.Row="2" Classes="b2" Name="Union" Content="Union"/>
 			<Button Grid.Row="3" Classes="b2" Name="Group" Content="Group"/>
+			<Button Grid.Row="4" Classes="b2" Name="DeleteLastChange" Content="Delete Last Change"/>
+			<Button Grid.Row="5" Classes="b2" Name="Clear" Content="Clear"/>
 		</Grid>
 	</Grid>
 </UserControl>
