@@ -9,11 +9,14 @@ namespace VisualFinal.Models
 {
     public class MyTab
     {
-        public MyTab(string h = "")
+        public MyTab(string h = "", List<object>? dbs = null)
         {
             Header = h;
+            DatabaseSet = dbs;
         }
         public string Header { get; set; }
         public bool ButtonVisible { get; set; }
+
+        public List<object>? DatabaseSet { get; set; }
     }
 }

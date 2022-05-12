@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:models="clr-namespace:VisualFinal.Models"
+			 xmlns:dbm="clr-namespace:VisualFinal.Models.Database"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="VisualFinal.Views.FirstView">
 	<UserControl.Styles>
@@ -56,7 +57,7 @@
 					Command="{Binding $parent[Window].DataContext.Change}"
 					Classes="b1"/>
 			<ScrollViewer Classes="sv1">
-				<TabControl Items="{Binding MainContext.Tabs}"
+				<TabControl Name="DataTabs" Items="{Binding MainContext.Tabs}"
 				 Classes="tc1">
 					<TabControl.ItemTemplate>
 						<DataTemplate>
@@ -80,12 +81,21 @@
 				</TabControl>
 			</ScrollViewer>
 		</DockPanel>
-		<!--
-		<DataGrid Grid.Row="1" Items="{Binding DataBaseGrid}" AutoGenerateColumns="True"/>
-		DataBaseGrid = DbContextVar.DbSetVar.ToList()  ???
-		-->
 		<ScrollViewer Grid.Row="1" Classes="sv2">
-			<DataGrid Items="{Binding MainContext.DBGS}" AutoGenerateColumns="True"/>
+			<!--
+			<ItemsControl Items="{Binding $parent[Window].DataContext.Data.Dogs}">
+				<ItemsControl.DataTemplates>
+					<DataTemplate DataType="{x:Type dbm:Dog}">
+						<Grid ColumnDefinitions="*,*">
+							<TextBlock Grid.Column="0" Text="{Binding Id}"></TextBlock>
+							<TextBlock Grid.Column="1" Text="{Binding Id}"></TextBlock>
+						</Grid>
+					</DataTemplate>
+				</ItemsControl.DataTemplates>
+			</ItemsControl>
+			-->
+			<DataGrid Name="DataTable" Items="{Binding $parent[Window].DataContext.Data.Dogs}"
+					  AutoGenerateColumns="True" CanUserSortColumns="True"/>
 		</ScrollViewer>
 	</Grid>
 

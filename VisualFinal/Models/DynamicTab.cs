@@ -8,9 +8,10 @@ namespace VisualFinal.Models
 {
     public class DynamicTab : MyTab
     {
-        public DynamicTab(string h = "") : base(h)
+        public DynamicTab(string h = "", List<object>? dbs = null) : base(h, dbs)
         {
             ButtonVisible = true;
         }
+        public Query BindedQuery { get; set; }
     }
 }

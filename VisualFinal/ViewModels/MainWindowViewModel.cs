@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using ReactiveUI;
+using System.Linq;
 using System.Reactive.Linq;
 using VisualFinal.Models;
+using VisualFinal.Models.Database;
 
 namespace VisualFinal.ViewModels
 {
@@ -12,8 +14,8 @@ namespace VisualFinal.ViewModels
     {
         public MainWindowViewModel()
         {
+            CreateContext();
             CreateTabs();
-            CreateDBGS();
             CreateQueries();
             Content = Fv = new FirstViewModel(this);
             Sv = new SecondViewModel(this);
@@ -39,12 +41,6 @@ namespace VisualFinal.ViewModels
             get { return tabs; }
             set { this.RaiseAndSetIfChanged(ref tabs, value); }
         }
-        ObservableCollection<DataBaseGridSample> dbgs;
-        public ObservableCollection<DataBaseGridSample> DBGS
-        {
-            get { return dbgs; }
-            set { this.RaiseAndSetIfChanged(ref dbgs, value); }
-        }
 
         ObservableCollection<Query> queries;
         public ObservableCollection<Query> Queries
@@ -56,32 +52,31 @@ namespace VisualFinal.ViewModels
         public FirstViewModel Fv { get; }
         public SecondViewModel Sv { get; }
 
+        DatabaseContext data;
+
+        public DatabaseContext Data
+        {
+            get { return data; }
+            set { this.RaiseAndSetIfChanged(ref data, value); }
+        }
+        private void CreateContext()
+        {
+            Data = new DatabaseContext();
+        }
+
         private void CreateTabs()
         {
             Tabs = new ObservableCollection<MyTab>();
-            Tabs.Add(new StaticTab("Dog"));
-            Tabs.Add(new StaticTab("Dog statistics"));
-            Tabs.Add(new StaticTab("Trainer"));
-            Tabs.Add(new StaticTab("Trainer statistics"));
-            Tabs.Add(new StaticTab("Track"));
-            Tabs.Add(new StaticTab("Trap"));
-            Tabs.Add(new StaticTab("Race"));
-            Tabs.Add(new StaticTab("Participant"));
-            Tabs.Add(new StaticTab("Bid"));
-            Tabs.Add(new StaticTab("Bidder"));
-            Tabs.Add(new DynamicTab("ggg"));
-            Tabs.Add(new DynamicTab("sadoj"));
-            Tabs.Add(new DynamicTab("s123231j"));
-        }
-        private void CreateDBGS()
-        {
-            DBGS = new ObservableCollection<DataBaseGridSample>();
-            DBGS.Add(new DataBaseGridSample("1", "2", "3", "4", "5"));
-            DBGS.Add(new DataBaseGridSample("2", "2", "3", "4", "5"));
-            DBGS.Add(new DataBaseGridSample("2", "3", "3", "4", "5"));
-            DBGS.Add(new DataBaseGridSample("2", "3", "4", "4", "5"));
-            DBGS.Add(new DataBaseGridSample("2", "3", "4", "5", "5"));
-            DBGS.Add(new DataBaseGridSample("2", "3", "4", "5", "6"));
+            Tabs.Add(new StaticTab("Dog", Data.Dogs.ToList<object>()));
+            Tabs.Add(new StaticTab("Dog statistics", Data.DogStatistics.ToList<object>()));
+            Tabs.Add(new StaticTab("Trainer", Data.Trainers.ToList<object>()));
+            Tabs.Add(new StaticTab("Trainer statistics", Data.TrainerStatistics.ToList<object>()));
+            Tabs.Add(new StaticTab("Track", Data.Tracks.ToList<object>()));
+            Tabs.Add(new StaticTab("Trap", Data.Traps.ToList<object>()));
+            Tabs.Add(new StaticTab("Race", Data.Races.ToList<object>()));
+            Tabs.Add(new StaticTab("Participant", Data.Participants.ToList<object>()));
+            Tabs.Add(new StaticTab("Bid", Data.Bids.ToList<object>()));
+            Tabs.Add(new StaticTab("Bidder", Data.Bidders.ToList<object>()));
         }
         private void CreateQueries()
         {
