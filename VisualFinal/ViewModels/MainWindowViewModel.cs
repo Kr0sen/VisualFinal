@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using VisualFinal.Models;
 using VisualFinal.Models.Database;
+using VisualFinal.Models.StaticTabs;
 
 namespace VisualFinal.ViewModels
 {
@@ -67,16 +68,16 @@ namespace VisualFinal.ViewModels
         private void CreateTabs()
         {
             Tabs = new ObservableCollection<MyTab>();
-            Tabs.Add(new StaticTab("Dog", Data.Dogs.ToList<object>()));
-            Tabs.Add(new StaticTab("Dog statistics", Data.DogStatistics.ToList<object>()));
-            Tabs.Add(new StaticTab("Trainer", Data.Trainers.ToList<object>()));
-            Tabs.Add(new StaticTab("Trainer statistics", Data.TrainerStatistics.ToList<object>()));
-            Tabs.Add(new StaticTab("Track", Data.Tracks.ToList<object>()));
-            Tabs.Add(new StaticTab("Trap", Data.Traps.ToList<object>()));
-            Tabs.Add(new StaticTab("Race", Data.Races.ToList<object>()));
-            Tabs.Add(new StaticTab("Participant", Data.Participants.ToList<object>()));
-            Tabs.Add(new StaticTab("Bid", Data.Bids.ToList<object>()));
-            Tabs.Add(new StaticTab("Bidder", Data.Bidders.ToList<object>()));
+            Tabs.Add(new DogTab("Dog", Data.Dogs));
+            Tabs.Add(new DogStatisticTab("Dog statistics", Data.DogStatistics));
+            Tabs.Add(new TrainerTab("Trainer", Data.Trainers));
+            Tabs.Add(new TrainerStatisticTab("Trainer statistics", Data.TrainerStatistics));
+            Tabs.Add(new TrackTab("Track", Data.Tracks));
+            Tabs.Add(new TrapTab("Trap", Data.Traps));
+            Tabs.Add(new RaceTab("Race", Data.Races));
+            Tabs.Add(new ParticipantTab("Participant", Data.Participants));
+            Tabs.Add(new BidTab("Bid", Data.Bids));
+            Tabs.Add(new BidderTab("Bidder", Data.Bidders));
         }
         private void CreateQueries()
         {
