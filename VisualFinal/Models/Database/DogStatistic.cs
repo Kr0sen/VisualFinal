@@ -13,9 +13,6 @@ namespace VisualFinal.Models.Database
         public long LongestLosingStreak { get; set; }
         public long CurrentWinningStreak { get; set; }
         public long CurrentLosingStreak { get; set; }
-        public byte[]? LastRaceDate { get; set; }
-
-        public virtual Dog Dog { get; set; } = null!;
-        public virtual Track TrackNameNavigation { get; set; } = null!;
+        public string? LastRaceDate { get; set; }
     }
 }

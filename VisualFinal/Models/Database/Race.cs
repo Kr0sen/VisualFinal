@@ -7,14 +7,10 @@ namespace VisualFinal.Models.Database
     {
         public Race()
         {
-            Participants = new HashSet<Participant>();
         }
 
         public string TrackName { get; set; } = null!;
         public long Number { get; set; }
-        public byte[] Date { get; set; } = null!;
-
-        public virtual Track TrackNameNavigation { get; set; } = null!;
-        public virtual ICollection<Participant> Participants { get; set; }
+        public string Date { get; set; } = null!;
     }
 }

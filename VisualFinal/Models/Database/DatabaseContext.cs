@@ -55,7 +55,7 @@ namespace VisualFinal.Models.Database
                     .HasColumnName("Race number");
 
                 entity.Property(e => e.RaceDate)
-                    .HasColumnType("DATE")
+                    .HasColumnType("VARCHAR (32)")
                     .HasColumnName("Race date");
 
                 entity.Property(e => e.TrapNumber)
@@ -67,11 +67,6 @@ namespace VisualFinal.Models.Database
                 entity.Property(e => e.Gain).HasColumnType("DOUBLE");
 
                 entity.Property(e => e.Size).HasColumnType("DOUBLE");
-
-                entity.HasOne(d => d.Participant)
-                    .WithMany(p => p.Bids)
-                    .HasForeignKey(d => new { d.TrackName, d.RaceNumber, d.RaceDate, d.TrapNumber })
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Bidder>(entity =>
@@ -104,11 +99,6 @@ namespace VisualFinal.Models.Database
                 entity.Property(e => e.Sex).HasColumnType("CHAR");
 
                 entity.Property(e => e.Sire).HasColumnType("VARCHAR (32)");
-
-                entity.HasOne(d => d.TrainerNavigation)
-                    .WithMany(p => p.Dogs)
-                    .HasForeignKey(d => d.Trainer)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<DogStatistic>(entity =>
@@ -132,7 +122,7 @@ namespace VisualFinal.Models.Database
                     .HasColumnName("Current winning streak");
 
                 entity.Property(e => e.LastRaceDate)
-                    .HasColumnType("DATE")
+                    .HasColumnType("VARCHAR (32)")
                     .HasColumnName("Last race date")
                     .HasDefaultValueSql("\"1000-01-01\"");
 
@@ -151,16 +141,6 @@ namespace VisualFinal.Models.Database
                 entity.Property(e => e.WinCount)
                     .HasColumnType("UNSIGNED SMALLINT")
                     .HasColumnName("Win count");
-
-                entity.HasOne(d => d.Dog)
-                    .WithMany(p => p.DogStatistics)
-                    .HasForeignKey(d => d.DogId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
-
-                entity.HasOne(d => d.TrackNameNavigation)
-                    .WithMany(p => p.DogStatistics)
-                    .HasForeignKey(d => d.TrackName)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Participant>(entity =>
@@ -178,7 +158,7 @@ namespace VisualFinal.Models.Database
                     .HasColumnName("Race number");
 
                 entity.Property(e => e.RaceDate)
-                    .HasColumnType("DATE")
+                    .HasColumnType("VARCHAR (32)")
                     .HasColumnName("Race date");
 
                 entity.Property(e => e.TrapNumber)
@@ -190,17 +170,8 @@ namespace VisualFinal.Models.Database
                 entity.Property(e => e.Place).HasColumnType("UNSIGNED SMALLINT");
 
                 entity.Property(e => e.Time)
-                    .HasColumnType("TIME")
+                    .HasColumnType("VARCHAR (32)")
                     .HasDefaultValueSql("\"000:00:00\"");
-
-                entity.HasOne(d => d.Dog)
-                    .WithMany(p => p.Participants)
-                    .HasForeignKey(d => d.DogId);
-
-                entity.HasOne(d => d.Race)
-                    .WithMany(p => p.Participants)
-                    .HasForeignKey(d => new { d.TrackName, d.RaceNumber, d.RaceDate })
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Race>(entity =>
@@ -215,12 +186,7 @@ namespace VisualFinal.Models.Database
 
                 entity.Property(e => e.Number).HasColumnType("UNSIGNED SMALLINT");
 
-                entity.Property(e => e.Date).HasColumnType("DATE");
-
-                entity.HasOne(d => d.TrackNameNavigation)
-                    .WithMany(p => p.Races)
-                    .HasForeignKey(d => d.TrackName)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                entity.Property(e => e.Date).HasColumnType("VARCHAR (32)");
             });
 
             modelBuilder.Entity<Track>(entity =>
@@ -273,16 +239,6 @@ namespace VisualFinal.Models.Database
                 entity.Property(e => e.WinnerFavoriteCount)
                     .HasColumnType("UNSIGNED SMALLINT")
                     .HasColumnName("Winner-favorite count");
-
-                entity.HasOne(d => d.TrackNameNavigation)
-                    .WithMany(p => p.TrainerStatistics)
-                    .HasForeignKey(d => d.TrackName)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
-
-                entity.HasOne(d => d.Trainer)
-                    .WithMany(p => p.TrainerStatistics)
-                    .HasForeignKey(d => d.TrainerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Trap>(entity =>
@@ -306,11 +262,6 @@ namespace VisualFinal.Models.Database
                 entity.Property(e => e.WinnerCount)
                     .HasColumnType("UNSIGNED INTEGER")
                     .HasColumnName("Winner count");
-
-                entity.HasOne(d => d.TrackNameNavigation)
-                    .WithMany(p => p.Traps)
-                    .HasForeignKey(d => d.TrackName)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             OnModelCreatingPartial(modelBuilder);

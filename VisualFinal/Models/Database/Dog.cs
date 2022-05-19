@@ -7,8 +7,6 @@ namespace VisualFinal.Models.Database
     {
         public Dog()
         {
-            DogStatistics = new HashSet<DogStatistic>();
-            Participants = new HashSet<Participant>();
         }
 
         public long Id { get; set; }
@@ -17,10 +15,6 @@ namespace VisualFinal.Models.Database
         public string? Sire { get; set; }
         public string? Dam { get; set; }
         public long Trainer { get; set; }
-        public byte[] IsFavorite { get; set; } = null!;
-
-        public virtual Trainer TrainerNavigation { get; set; } = null!;
-        public virtual ICollection<DogStatistic> DogStatistics { get; set; }
-        public virtual ICollection<Participant> Participants { get; set; }
+        public bool? IsFavorite { get; set; } = null!;
     }
 }

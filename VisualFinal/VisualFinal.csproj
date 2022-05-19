@@ -10,6 +10,7 @@
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
     <None Remove=".gitignore" />
+    <None Remove="Assets\Database.db" />
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.
@@ -36,5 +37,13 @@
     </PackageReference>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\StaticTableCreateRowViews\BidderView.axaml.cs">
+      <DependentUpon>BidderView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StaticTableCreateRowViews\DogView.axaml.cs">
+      <DependentUpon>DogView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
