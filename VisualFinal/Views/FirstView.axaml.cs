@@ -18,6 +18,7 @@ namespace VisualFinal.Views
         {
             InitializeComponent();
             this.Find<DataGrid>("DataTable").AutoGeneratingColumn += dataGrid_AutoGeneratingColumn;
+            this.Find<DataGrid>("DataTable").PropertyChanged += dataGrid_PropertyChanged;
             this.FindControl<TabControl>("DataTabs").SelectionChanged += tabControl_SelectionChanged;
             this.FindControl<Button>("CreateNew").Click += button_CreateNew_Click;
             this.FindControl<Button>("Delete").Click += button_Delete_Click;
@@ -121,6 +122,10 @@ namespace VisualFinal.Views
             var tab = (this.FindControl<TabControl>("DataTabs").SelectedItem as MyTab);
             if (!tab.DataColumns.Contains(e.Column.Header.ToString()))
                 e.Column.IsVisible = false;
+        }
+        private void dataGrid_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+        {
+            (this.DataContext as FirstViewModel).MainContext.Data.SaveChanges();
         }
 
         async private void button_CreateNew_Click(object? sender, RoutedEventArgs e)
