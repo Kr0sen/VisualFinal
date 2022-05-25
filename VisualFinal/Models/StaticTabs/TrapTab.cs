@@ -18,6 +18,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns.Add("TrapNumber");
             DataColumns.Add("RaceCount");
             DataColumns.Add("WinnerCount");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<Trap>? DBS { get; set; }

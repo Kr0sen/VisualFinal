@@ -21,6 +21,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns.Add("DogId");
             DataColumns.Add("Place");
             DataColumns.Add("Time");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<Participant>? DBS { get; set; }

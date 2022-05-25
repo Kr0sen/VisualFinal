@@ -16,6 +16,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns = new List<string>();
             DataColumns.Add("Name");
             DataColumns.Add("Distance");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<Track>? DBS { get; set; }

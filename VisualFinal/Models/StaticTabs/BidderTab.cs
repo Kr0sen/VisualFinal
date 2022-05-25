@@ -16,6 +16,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns = new List<string>();
             DataColumns.Add("Id");
             DataColumns.Add("FullName");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<Bidder>? DBS { get; set; }

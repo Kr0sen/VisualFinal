@@ -23,6 +23,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns.Add("CurrentWinningStreak");
             DataColumns.Add("CurrentLosingStreak");
             DataColumns.Add("LastRaceDate");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<DogStatistic>? DBS { get; set; }

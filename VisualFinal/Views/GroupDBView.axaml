@@ -44,7 +44,7 @@
 			<Setter Property="BorderBrush" Value="Gray"/>
 		</Style>
 	</Window.Styles>
-	<Grid RowDefinitions="2*,10*,2*,*,*">
+	<Grid RowDefinitions="*,6*,*,6*,*,*">
 		<Border Classes="br1" Grid.Row="0" Background="LightGray">
 			<TextBlock Text="Table to group"
 					 HorizontalAlignment="Center"
@@ -55,18 +55,40 @@
 				<ItemsControl Items="{Binding MainContext.Tabs}">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<Border Classes="br1" Grid.Column="3">
-								<RadioButton Classes="rb1" GroupName="First Table" Content="{Binding Header}"/>
+							<Border Classes="br1">
+								<RadioButton Classes="rb1" GroupName="First Table" Content="{Binding Header}"
+									Command="{Binding $parent[ItemsControl].DataContext.ButtonChangeTable}"
+									CommandParameter="{Binding}"/>
 							</Border>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
 			</StackPanel>
 		</ScrollViewer>
-		<Border Classes="br1" Grid.Row="2">
-			<TextBox Watermark="GROUP BY" Focusable="True" CornerRadius="0" HorizontalContentAlignment="Center"/>
+		<Border Classes="br1" Grid.Row="2" Background="LightGray">
+			<TextBlock Text="GROUP BY"
+					 HorizontalAlignment="Center"
+					 VerticalAlignment="Center"/>
 		</Border>
-		<Button Classes="b2" Grid.Row="3" Content="Cancel" BorderThickness="0,1,0,1"/>
-		<Button Classes="b2" Grid.Row="4" Content="Confirm" BorderThickness="0,1,0,0"/>
+		<ScrollViewer Grid.Row="3" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+			<StackPanel>
+				<ItemsControl Items="{Binding SelectedTab.DataColumns}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Classes="br1">
+								<RadioButton Classes="rb1" GroupName="Second Table" Content="{Binding}"
+									Command="{Binding $parent[ItemsControl].DataContext.ButtonChangeGROUPBY}"
+									CommandParameter="{Binding}"/>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+		</ScrollViewer>
+		<!--<Border Classes="br1" Grid.Row="2">
+			<TextBox Watermark="GROUP BY" Focusable="True" CornerRadius="0" HorizontalContentAlignment="Center"/>
+		</Border>-->
+		<Button Name="Confirm" Classes="b2" Grid.Row="4" Content="Confirm" BorderThickness="0,1,0,0"/>
+		<Button Name="Cancel" Classes="b2" Grid.Row="5" Content="Cancel" BorderThickness="0,1,0,1"/>
 	</Grid>
 </Window>

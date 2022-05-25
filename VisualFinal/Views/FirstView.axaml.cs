@@ -36,7 +36,7 @@ namespace VisualFinal.Views
             {
                 if (selectedTab is DynamicTab)
                 {
-                    var selectedItems = (selectedTab as DynamicTab).BindedList;
+                    var selectedItems = (selectedTab as DynamicTab).ObjectList;
                     if (selectedItems != null)
                         this.Find<DataGrid>("DataTable").Items = selectedItems;
                 }
@@ -120,12 +120,16 @@ namespace VisualFinal.Views
         DataGridAutoGeneratingColumnEventArgs e)
         {
             var tab = (this.FindControl<TabControl>("DataTabs").SelectedItem as MyTab);
+            if (tab is DynamicTab) (this.DataContext as FirstViewModel).ButtonsEnabled = false;
+            else (this.DataContext as FirstViewModel).ButtonsEnabled = true;
             if (!tab.DataColumns.Contains(e.Column.Header.ToString()))
                 e.Column.IsVisible = false;
         }
         private void dataGrid_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
         {
-            (this.DataContext as FirstViewModel).MainContext.Data.SaveChanges();
+            if (this.DataContext is not null)
+                if (this.FindControl<TabControl>("DataTabs").SelectedItem is not DynamicTab)
+                    (this.DataContext as FirstViewModel).MainContext.Data.SaveChanges();
         }
 
         async private void button_CreateNew_Click(object? sender, RoutedEventArgs e)

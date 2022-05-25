@@ -21,6 +21,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns.Add("BidderId");
             DataColumns.Add("Size");
             DataColumns.Add("Gain");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<Bid>? DBS { get; set; }

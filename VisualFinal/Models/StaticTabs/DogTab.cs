@@ -21,6 +21,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns.Add("Dam");
             DataColumns.Add("Trainer");
             DataColumns.Add("IsFavorite");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<Dog>? DBS { get; set; }

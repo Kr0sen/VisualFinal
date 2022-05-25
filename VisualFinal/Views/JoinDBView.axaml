@@ -100,7 +100,7 @@
 					 CornerRadius="0"
 					 HorizontalContentAlignment="Center"/>
 		</Border>
-		<Button Classes="b2" Grid.Row="6" Content="Cancel" BorderThickness="0,1,0,1"/>
-		<Button Classes="b2" Grid.Row="7" Content="Confirm" BorderThickness="0,1,0,0"/>
+		<Button Name="Confirm" Classes="b2" Grid.Row="6" Content="Confirm" BorderThickness="0,1,0,0"/>
+		<Button Name="Cancel" Classes="b2" Grid.Row="7" Content="Cancel" BorderThickness="0,1,0,1"/>
 	</Grid>
 </Window>

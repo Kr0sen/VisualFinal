@@ -37,7 +37,7 @@
 		</Style>
 	</UserControl.Styles>
 	<Grid ColumnDefinitions="*,2*">
-		<Grid Grid.Column="0" RowDefinitions="12*,*,*">
+		<Grid Grid.Column="0" RowDefinitions="13*,*">
 			<ScrollViewer Grid.Row="0" Classes="sv1">
 				<ItemsControl Items="{Binding MainContext.Queries}">
 					<ItemsControl.ItemTemplate>
@@ -46,8 +46,12 @@
 								<Grid ColumnDefinitions="4*,*,*">
 									<TextBlock Grid.Column="0" Text="{Binding Name}"
 									 VerticalAlignment="Center"/>
-									<Button Grid.Column="1" Content="Show" Classes="b1"/>
-									<Button Grid.Column="2" Content="Delete" Classes="b1"/>
+									<Button Grid.Column="1" Content="Show" Classes="b1"
+											Command="{Binding $parent[ItemsControl].DataContext.ButtonShowQuery}"
+											CommandParameter="{Binding}"/>
+									<Button Grid.Column="2" Content="Delete" Classes="b1"
+											Command="{Binding $parent[ItemsControl].DataContext.ButtonDeleteQuery}"
+											CommandParameter="{Binding}"/>
 								</Grid>
 							</Border>
 						</DataTemplate>
@@ -55,21 +59,18 @@
 				</ItemsControl>
 			</ScrollViewer>
 			<Button Grid.Row="1"
-			 Content="Create new"
-			 Classes="b2"/>
-			<Button Grid.Row="2"
 			 Content="Change view"
 			 Command="{Binding $parent[Window].DataContext.Change}"
 			 Classes="b2"/>
 		</Grid>
-		<Grid Grid.Column="1" RowDefinitions="10*,*,*,*,*">
+		<Grid Grid.Column="1" RowDefinitions="11*,*,*,*">
 			<Border Classes="br1">
-				<TextBox Grid.Row="0" Watermark="Your query here" Focusable="False"/>
+				<TextBox Grid.Row="0" Watermark="Your query here" Focusable="False"
+						 Text="{Binding QueryDescription}"/>
 			</Border>
 			<Button Grid.Row="1" Classes="b2" Name="SELECT" Content="SELECT"/>
 			<Button Grid.Row="2" Classes="b2" Name="JOIN" Content="JOIN"/>
 			<Button Grid.Row="3" Classes="b2" Name="GROUP" Content="GROUP"/>
-			<Button Grid.Row="4" Classes="b2" Name="Clear" Content="Clear"/>
 		</Grid>
 	</Grid>
 </UserControl>

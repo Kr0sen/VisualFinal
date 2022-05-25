@@ -18,6 +18,7 @@ namespace VisualFinal.Models.StaticTabs
             DataColumns.Add("TrackName");
             DataColumns.Add("WinnerCount");
             DataColumns.Add("WinnerFavoriteCount");
+            ObjectList = DBS.ToList<object>();
         }
 
         new public DbSet<TrainerStatistic>? DBS { get; set; }

@@ -107,10 +107,12 @@
 					  AutoGenerateColumns="True" CanUserSortColumns="True"/>
 		</ScrollViewer>
 		<Border Classes="br1" Grid.Row="2" BorderThickness="0,1,0,0">
-			<Button Classes="b3" Content="Create new" Name="CreateNew"/>
+			<Button Classes="b3" Content="Create new" Name="CreateNew"
+					IsEnabled="{Binding ButtonsEnabled}"/>
 		</Border>
 		<Border Classes="br1" Grid.Row="3" BorderThickness="0,1,0,0">
-			<Button Classes="b3" Content="Delete" Name="Delete"/>
+			<Button Classes="b3" Content="Delete" Name="Delete"
+					IsEnabled="{Binding ButtonsEnabled}"/>
 		</Border>
 	</Grid>
 

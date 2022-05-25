@@ -55,7 +55,7 @@
 		<Border Classes="br1" Grid.Row="3">
 			<TextBox Watermark="WHERE" Focusable="True" CornerRadius="0" HorizontalContentAlignment="Center"/>
 		</Border>
-		<Button Classes="b2" Grid.Row="4" Content="Cancel" BorderThickness="0,1,0,1"/>
-		<Button Classes="b2" Grid.Row="5" Content="Confirm" BorderThickness="0,1,0,0"/>
+		<Button Name="Confirm" Classes="b2" Grid.Row="4" Content="Confirm" BorderThickness="0,1,0,0"/>
+		<Button Name="Cancel" Classes="b2" Grid.Row="5" Content="Cancel" BorderThickness="0,1,0,1"/>
 	</Grid>
 </Window>
