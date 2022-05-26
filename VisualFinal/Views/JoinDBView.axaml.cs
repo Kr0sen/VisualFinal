@@ -50,7 +50,9 @@ namespace VisualFinal.Views
                 new Query(
                 string.Format("{0}_J_{1}",
                     StringTrunc(dc.FirstSelectedTab.Header, 3), StringTrunc(dc.SecondSelectedTab.Header, 3)),
-                string.Format("{0} JOIN {1}", dc.FirstSelectedTab.Header, dc.SecondSelectedTab.Header));
+                string.Format("{0} JOIN {1} ON {0}.{2} EQUALS {1}.{3}",
+                dc.FirstSelectedTab.Header, dc.SecondSelectedTab.Header,
+                dc.FirstSelectedField, dc.SecondSelectedField));
             var newTab = new DynamicTab(
                 string.Format("{0}_J_{1}",
                     StringTrunc(dc.FirstSelectedTab.Header, 3), StringTrunc(dc.SecondSelectedTab.Header, 3)),
@@ -62,7 +64,6 @@ namespace VisualFinal.Views
             newTab.BindedQuery = newQuery;
             dc.MainContext.Queries.Add(newQuery);
             dc.MainContext.Tabs.Add(newTab);
-            this.Close();
             this.Close();
         }
         private void button_Cancel_Click(object? sender, RoutedEventArgs e)
