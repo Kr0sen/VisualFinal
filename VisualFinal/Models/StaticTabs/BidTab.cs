@@ -10,8 +10,9 @@ namespace VisualFinal.Models.StaticTabs
 {
     public class BidTab : StaticTab
     {
-        public BidTab(string h = "", DbSet<Bid>? dBS = null) : base(h)
+        public BidTab(DbSet<Bid>? dBS = null)
         {
+            Header = "Bid";
             DBS = dBS;
             DataColumns = new List<string>();
             DataColumns.Add("TrackName");

@@ -68,16 +68,16 @@ namespace VisualFinal.ViewModels
         private void CreateTabs()
         {
             Tabs = new ObservableCollection<MyTab>();
-            Tabs.Add(new DogTab("Dog", Data.Dogs));
-            Tabs.Add(new DogStatisticTab("Dog statistics", Data.DogStatistics));
-            Tabs.Add(new TrainerTab("Trainer", Data.Trainers));
-            Tabs.Add(new TrainerStatisticTab("Trainer statistics", Data.TrainerStatistics));
-            Tabs.Add(new TrackTab("Track", Data.Tracks));
-            Tabs.Add(new TrapTab("Trap", Data.Traps));
-            Tabs.Add(new RaceTab("Race", Data.Races));
-            Tabs.Add(new ParticipantTab("Participant", Data.Participants));
-            Tabs.Add(new BidTab("Bid", Data.Bids));
-            Tabs.Add(new BidderTab("Bidder", Data.Bidders));
+            Tabs.Add(new DogTab(Data.Dogs));
+            Tabs.Add(new DogStatisticTab(Data.DogStatistics));
+            Tabs.Add(new TrainerTab(Data.Trainers));
+            Tabs.Add(new TrainerStatisticTab(Data.TrainerStatistics));
+            Tabs.Add(new TrackTab(Data.Tracks));
+            Tabs.Add(new TrapTab(Data.Traps));
+            Tabs.Add(new RaceTab(Data.Races));
+            Tabs.Add(new ParticipantTab(Data.Participants));
+            Tabs.Add(new BidTab(Data.Bids));
+            Tabs.Add(new BidderTab(Data.Bidders));
         }
         private void CreateQueries()
         {

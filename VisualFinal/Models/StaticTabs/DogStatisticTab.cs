@@ -10,8 +10,9 @@ namespace VisualFinal.Models.StaticTabs
 {
     public class DogStatisticTab : StaticTab
     {
-        public DogStatisticTab(string h = "", DbSet<DogStatistic>? dBS = null) : base(h)
+        public DogStatisticTab(DbSet<DogStatistic>? dBS = null)
         {
+            Header = "DogStatistic";
             DBS = dBS;
             DataColumns = new List<string>();
             DataColumns.Add("DogId");

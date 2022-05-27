@@ -10,8 +10,9 @@ namespace VisualFinal.Models.StaticTabs
 {
     public class TrainerTab : StaticTab
     {
-        public TrainerTab(string h = "", DbSet<Trainer>? dBS = null) : base(h)
+        public TrainerTab(DbSet<Trainer>? dBS = null)
         {
+            Header = "Trainer";
             DBS = dBS;
             DataColumns = new List<string>();
             DataColumns.Add("Id");

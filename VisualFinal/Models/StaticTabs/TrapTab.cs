@@ -10,8 +10,9 @@ namespace VisualFinal.Models.StaticTabs
 {
     public class TrapTab : StaticTab
     {
-        public TrapTab(string h = "", DbSet<Trap>? dBS = null) : base(h)
+        public TrapTab(DbSet<Trap>? dBS = null)
         {
+            Header = "Trap";
             DBS = dBS;
             DataColumns = new List<string>();
             DataColumns.Add("TrackName");
